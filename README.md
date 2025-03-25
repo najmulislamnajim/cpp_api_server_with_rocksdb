@@ -1,5 +1,3 @@
-Here is a GitHub-style README file based on the information you provided:
-
 ```markdown
 # RocksDB and MariaDB Server
 
@@ -86,36 +84,6 @@ g++ -o server server.cpp database.cpp -lrocksdb -lmysqlcppconn -std=c++17 -Icpp-
 # -Inlohmann: Includes the nlohmann directory for json.hpp.
 ```
 
-## MariaDB Setup
-Log in to MariaDB:
-```bash
-sudo mysql -u root -p
-```
-
-Create the database and table:
-```sql
-CREATE DATABASE odms_dev_db;
-USE odms_dev_db;
-CREATE TABLE rdl_test (
-    billing_doc_no VARCHAR(255),
-    billing_date DATE,
-    da_code INT
-);
-```
-
-Optionally, make `billing_doc_no` a primary key if uniqueness is required:
-```sql
-CREATE TABLE rdl_test (
-    billing_doc_no VARCHAR(255) PRIMARY KEY,
-    billing_date DATE,
-    da_code INT
-);
-```
-
-Update connection details in `server.cpp` (around line 30) if necessary:
-- Host: `tcp://test:3306` (replace `test` with `localhost` or your MariaDB host).
-- Username: `root`.
-- Password: `&j}d` (replace with your actual MariaDB root password).
 
 ## Running the Server
 Ensure the RocksDB database directory exists and is writable:
@@ -141,11 +109,7 @@ curl -X POST -H "Content-Type: application/json" -d '{"key":"123456","billing_do
 
 ## Verification
 - **RocksDB**: The full JSON is stored in `/mnt/test/Desktop/Impala/learning/rocksdb/learning` under the key `123456`.
-- **MariaDB**: Check the `rdl_test` table:
-  ```sql
-  SELECT * FROM rdl_test;
-  # Expected output: '3', '2025-03-25', 5001.
-  ```
+
 
 ## Troubleshooting
 ### RocksDB Lock Errors:
@@ -159,39 +123,13 @@ rm /mnt/test/Desktop/Impala/learning/rocksdb/learning/LOCK
 - Verify `httplib.h` and `json.hpp` are in the correct directories.
 
 ### MariaDB Connection Issues:
-- Confirm the host (`test:3306`), username (`root`), and password (`&j}d`) in `server.cpp` match your MariaDB setup.
+- Confirm the host (`test:3306`), username (`root`), and password (`xyz`) in `server.cpp` match your MariaDB setup.
 - Test connectivity:
   ```bash
   mysql -u root -p -h test
   ```
 
-## Git Workflow
-To push the project to a remote repository:
 
-### Initialize the repository (if not already done):
-```bash
-git init
-git config --global --add safe.directory /mnt/test/Desktop/Impala/learning/rocksdb
-```
-
-### Set your Git identity:
-```bash
-git config --global user.name "Najmul Islam"
-git config --global user.email "najmulislamru@gmail.com"
-```
-
-### Add and commit files:
-```bash
-git add database.h database.cpp server.cpp
-git commit -m "Initial commit with RocksDB and MariaDB server"
-```
-
-### Push to a remote:
-```bash
-git remote add origin <your-repo-url>
-git push -u origin main
-# Replace <your-repo-url> with your repository URL (e.g., https://github.com/username/repo.git).
-```
 
 ## Notes
 - **Path Portability**: The RocksDB path is hardcoded. Update `server.cpp` to use a relative path (e.g., `./db`) for easier deployment.
@@ -200,5 +138,3 @@ git push -u origin main
 
 For further assistance, contact **Najmul Islam** at [najmulislamru@gmail.com](mailto:najmulislamru@gmail.com).
 ```
-
-You can copy and paste this to your `README.md` file in the project directory.
