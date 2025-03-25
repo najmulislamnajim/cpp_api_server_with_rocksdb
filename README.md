@@ -1,7 +1,8 @@
 ```markdown
 # RocksDB and MariaDB Server
 
-This project implements a simple HTTP server using `cpp-httplib`, with a key-value store powered by RocksDB and a relational database backend using MariaDB. The server accepts POST requests to store JSON data in both RocksDB and MariaDB.
+This project implements a simple HTTP server using `cpp-httplib`, with a key-value store powered by RocksDB and a relational database backend using MariaDB.
+The server accepts POST requests to store JSON data in both RocksDB and MariaDB.
 
 **Author**: Najmul Islam  
 **Email**: najmulislamru@gmail.com  
