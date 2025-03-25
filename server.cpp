@@ -32,7 +32,7 @@ int main() {
 
         // Initialize MySQL driver and create a connection
         driver = sql::mysql::get_mysql_driver_instance();
-        con = driver->connect("tcp://178.128.94.148:3306", "root", "&j}HS9L02z");
+        con = driver->connect("tcp://test:3306", "root", "xyz");
 
         // Connect to the 'odms_dev_db' database
         con->setSchema("odms_dev_db");
@@ -92,6 +92,8 @@ int main() {
         // Optional: Add a simple GET endpoint to verify the server is running
         svr.Get("/", [](const httplib::Request&, httplib::Response& res) {
             res.set_content("Welcome to the RocksDB API server!", "text/plain");
+            res.set_content("Author: Najmul Islam", "text/plain");
+            res.set_content("E-mail: najmulislamru@gmail.com","text/plain");
         });
 
         // Start the server
